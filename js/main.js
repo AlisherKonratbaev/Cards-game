@@ -1,17 +1,13 @@
-// By @AbubakerSaeed96 (twitter)
-// ===================
+import { images } from "./data.js";
+import { Cards } from "./cards.js";
 
-// Images are from Unsplash.
 
-// Looks Good In Firefox
-// Font not displaying correctly in Chrome and Opera
-// Looks Good In Edge Dev (Almost)
 
-// Thank You For Viewing.
+const game1 = new Cards(images);
+game1.addCards(".wrap");
+game1.startGame();
 
-const cart1 = document.querySelector(".flip-card-container");
 
-cart1.addEventListener("click", (e) => {
-    
-    cart1.classList.toggle("show");
-});
+
+
+
