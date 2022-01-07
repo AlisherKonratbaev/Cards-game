@@ -6,7 +6,8 @@ export class Cards {
     }
 
     addCards(selector) {
-        const container = document.querySelector(selector);
+        this._selector = selector;
+        const container = document.querySelector(this._selector);
         const cardsArr = this._generateCards(this.images);
         container.innerHTML = cardsArr.join("");
     }
@@ -21,8 +22,24 @@ export class Cards {
                     card.classList.toggle("closed");
                 }
                 this._checkCards();
+
             });
         });
+    }
+    _restart() {
+        let goods = document.querySelectorAll(".flip-card-container.good");
+        if (goods.length == this.images.length * 2) {
+            let game = confirm("Do you want to play more ?");
+            if (game) {
+
+                goods.forEach(el => {
+                    el.remove();
+                });
+
+                this.addCards(this._selector);
+                this.startGame();
+            }
+        }
     }
 
     _generateCards(arr) {
@@ -82,6 +99,10 @@ export class Cards {
                 this._closeCards();
             }
         }
+        setTimeout(() => {
+            this._restart();
+        }, 600);
+
     }
 
     _closeCards() {
@@ -97,4 +118,3 @@ export class Cards {
 
 
 }
-
